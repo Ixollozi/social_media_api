@@ -5,10 +5,10 @@ from database import get_db
 # регитсрация пользователя
 
 
-def register_user_db(name, mail, phone_number, password, city):
+def register_user_db(name, mail, phone_number, password, user_city):
     db = next(get_db())
     new_user = User(name=name, mail=mail, phone_number=phone_number,
-                    password=password, user_city=city, reg_date=datetime.now())
+                    password=password, user_city=user_city, reg_date=datetime.now())
     #добавляем в базу
     db.add(new_user)
     # сохраним в базу

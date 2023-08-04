@@ -9,12 +9,17 @@ from api import app
 class User(BaseModel):
     name: str
     mail: str
-    phone: str
+    phone_number: str
     password: str
-    city: str
+    user_city: str
 
 # регистрация пользователя
 @app.post('/api/registeration')
 async def register_user(user_model: User):
-    print(user_model)
+    user_data = dict(user_model)
+    try:
+        reg_user = register_user_db(**user_data)
+    except Exception as e:
+        print(e)
+
     return {'status': 1}
